@@ -87,7 +87,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'jnatest$jna_shanaikenkyudb',
-        'USER': 'jnatest',
+        'USER': 'root',
         'PASSWORD': 'jna1999',
         # 'HOST': '192.168.101.192',
         # 'HOST': '192.168.101.31',
