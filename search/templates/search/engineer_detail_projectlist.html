@@ -1,0 +1,65 @@
+<table class="table table-sm">
+    <thead>
+        <tr>
+            <th scope="col">
+                案件名  
+            </th>
+            <th scope="col">
+                作業内容  
+            </th>
+            <th scope="col">
+                作業期間 
+            </th>
+            <th scope="col">
+                スキルレベル 
+            </th>
+            <th scope="col">
+                詳細  
+            </th>
+        </tr>
+    </thead>
+    <tbody>  
+    {% for project in project %}
+        {% if project.0.clientname != None %}
+        <tr>
+            <form action="" method="post">
+                {% if project.0.clientname %}
+                    <td>{{project.0.clientname}}</td>
+                {% elif project.clientname %}
+                    <td>{{project.clientname}}</td>
+                {% else %}
+                    <td></td>    
+                {% endif %}
+
+                {% if project.0.workcontents %}
+                    <td>{{project.0.workcontents}}</td>
+                {% elif project.workcontents %}
+                    <td>{{project.workcontents}}</td>
+                {% else %}
+                    <td></td>
+                {% endif %}
+
+                {% if project.0.period %}
+                    <td>{{project.0.period}}</td>
+                {% elif project.period %}
+                    <td>{{project.period}}</td>
+                {% else %}
+                    <td></td>
+                {% endif %}
+
+                {% if project.0.skilllevel %}
+                    <td>{{project.0.skilllevel}}</td>
+                {% elif project.skilllevel %}
+                    <td>{{project.skilllevel}}</td>    
+                {% else %}
+                    <td></td>
+                {% endif %}
+                <td>
+                    <a href="{% url 'project_detail' project.0.id %}" class="btn btn-outline-success">詳細</a>
+                </td>
+            </form>    
+        </tr>
+        {% endif %}
+    {% endfor %}
+    </tbody>  
+</table>    

@@ -1,0 +1,239 @@
+<style>
+    .dropdown-menu {
+        display: none;
+        /* 最初はすべてのドロップダウンを非表示にする */
+    }
+
+    .dropdown-menu.active {
+        display: block;
+        /* アクティブなドロップダウンメニューを表示する */
+    }
+</style>
+
+<form action="{% url 'some-project-list' %}" method="GET" class="my-4">
+    <div class="row">
+        <div class="col-4">
+            <input class="form-control me-2" type="text" name="project_name" placeholder="案件名を入力"
+                value="{{project_name}}">
+        </div>
+        <div class="col-4">
+            <input class="form-control me-2" type="text" name="freeword" placeholder="フリーワードを入力" value="{{freeword}}">
+        </div>
+        <div class="col-4">
+            <input class="form-control me-2" type="text" name="period" placeholder="期間を入力" value="{{ period }}">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <input type="checkbox" id="checkbox1" onclick="toggleDropdown('dropdownMenu1')"> 資格
+            <div class="dropdown" id="dropdownMenu1">
+                <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuButton1"
+                    aria-expanded="false">
+                    資格リスト
+                </button>
+                <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton1">
+                    {% for skill in skills %}
+                    {% if skill.classification == '01' %}
+                    <li class="dropdown-item">
+                        <label>
+                            <input class="form-check-input" type="checkbox" name="skills" value="{{skill.name}}">
+                            {{ skill.name }}
+                        </label>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="col-4">
+            <input type="checkbox" id="checkbox2" onclick="toggleDropdown('dropdownMenu2')"> プログラミングスキル
+            <div class="dropdown" id="dropdownMenu2">
+                <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuButton2"
+                    aria-expanded="false">
+                    プログラミングスキルリスト
+                </button>
+                <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton2">
+                    {% for skill in skills %}
+                    {% if skill.classification == '02' %}
+                    <li class="dropdown-item">
+                        <label>
+                            <input class="form-check-input" type="checkbox" name="skills" value="{{skill.name}}">
+                            {{ skill.name }}
+                        </label>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="col-4">
+            <input type="checkbox" id="checkbox3" onclick="toggleDropdown('dropdownMenu3')"> ツールスキル
+            <div class="dropdown" id="dropdownMenu3">
+                <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuButton3"
+                    aria-expanded="false">
+                    ツールスキルリスト
+                </button>
+                <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton3">
+                    {% for skill in skills %}
+                    {% if skill.classification == '03' %}
+                    <li class="dropdown-item">
+                        <label>
+                            <input class="form-check-input" type="checkbox" name="skills" value="{{skill.name}}">
+                            {{ skill.name }}
+                        </label>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <input type="checkbox" id="checkbox4" onclick="toggleDropdown('dropdownMenu4')"> OSスキル
+            <div class="dropdown" id="dropdownMenu4">
+                <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuButton4"
+                    aria-expanded="false">
+                    OSスキルリスト
+                </button>
+                <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton4">
+                    {% for skill in skills %}
+                    {% if skill.classification == '04' %}
+                    <li class="dropdown-item">
+                        <label>
+                            <input class="form-check-input" type="checkbox" name="skills" value="{{skill.name}}">
+                            {{ skill.name }}
+                        </label>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="col-4">
+            <input type="checkbox" id="checkbox5" onclick="toggleDropdown('dropdownMenu5')"> サーバースキル
+            <div class="dropdown" id="dropdownMenu5">
+                <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuButton5"
+                    aria-expanded="false">
+                    サーバースキルリスト
+                </button>
+                <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton5">
+                    {% for skill in skills %}
+                    {% if skill.classification == '05' %}
+                    <li class="dropdown-item">
+                        <label>
+                            <input class="form-check-input" type="checkbox" name="skills" value="{{skill.name}}">
+                            {{ skill.name }}
+                        </label>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="col-4">
+            <input type="checkbox" id="checkbox6" onclick="toggleDropdown('dropdownMenu6')"> DBスキル
+            <div class="dropdown" id="dropdownMenu6">
+                <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuButton6"
+                    aria-expanded="false">
+                    DBスキルリスト
+                </button>
+                <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton6">
+                    {% for skill in skills %}
+                    {% if skill.classification == '06' %}
+                    <li class="dropdown-item">
+                        <label>
+                            <input class="form-check-input" type="checkbox" name="skills" value="{{skill.name}}">
+                            {{ skill.name }}
+                        </label>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <input type="checkbox" id="checkbox7" onclick="toggleDropdown('dropdownMenu7')"> インフラスキル
+            <div class="dropdown" id="dropdownMenu7">
+                <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuButton7"
+                    aria-expanded="false">
+                    インフラスキルリスト
+                </button>
+                <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton7">
+                    {% for skill in skills %}
+                    {% if skill.classification == '07' %}
+                    <li class="dropdown-item">
+                        <label>
+                            <input class="form-check-input" type="checkbox" name="skills" value="{{skill.name}}">
+                            {{ skill.name }}
+                        </label>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="col-4">
+            <input type="checkbox" id="checkbox8" onclick="toggleDropdown('dropdownMenu8')"> 開発経験
+            <div class="dropdown" id="dropdownMenu8">
+                <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuButton8"
+                    aria-expanded="false">
+                    開発経験リスト
+                </button>
+                <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton8">
+                    {% for skill in skills %}
+                    {% if skill.classification == '08' %}
+                    <li class="dropdown-item">
+                        <label>
+                            <input class="form-check-input" type="checkbox" name="skills" value="{{skill.name}}">
+                            {{ skill.name }}
+                        </label>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="col-4">
+            <input type="checkbox" id="checkbox9" onclick="toggleDropdown('dropdownMenu9')"> 役割
+            <div class="dropdown" id="dropdownMenu9">
+                <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuButton9"
+                    aria-expanded="false">
+                    役割リスト
+                </button>
+                <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton9">
+                    {% for skill in skills %}
+                    {% if skill.classification == '09' %}
+                    <li class="dropdown-item">
+                        <label>
+                            <input class="form-check-input" type="checkbox" name="skills" value="{{skill.name}}">
+                            {{ skill.name }}
+                        </label>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-4">
+            <a href="{% url 'top' %}" class="btn btn-outline-success">戻る</a>
+        </div>
+        <div class="col-4">
+            {% include 'search/search_project_home.html' %}
+        </div>
+        <div class="col-4">
+            <button type="submit" class="btn btn-outline-success">検索</button>
+        </div>
+    </div>
+</form>
+
+<script>
+    function toggleDropdown(dropdownId) {
+        var dropdown = document.getElementById(dropdownId).parentNode.querySelector('.dropdown-menu');
+        dropdown.classList.toggle('active');
+    }
+</script>

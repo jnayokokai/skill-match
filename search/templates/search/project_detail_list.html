@@ -1,0 +1,76 @@
+{% extends 'search/project_detail_base.html' %}
+
+{% block content %}
+
+<table class="table table-bordered table-sm">
+    <tr>
+        <td>作業内容</td>
+        <td>{{project.workcontents}}</td>
+    </tr>
+    <tr>
+        <td>職種</td>
+        <td>{{project.jobtype}}</td>
+    </tr>
+    <tr>
+        <td>案件顧客名</td>
+        <td>{{project.clientname}}</td>
+    </tr>
+    <tr>
+        <td>作業工程</td>
+        <td>{{project.workprocess}}</td>
+    </tr>
+    <tr>
+        <td>必須スキル</td>
+        <td>{{project.mustskill}}</td>
+    </tr>
+    <tr>
+        <td>尚可スキル</td>
+        <td>{{project.passableskill}}</td>
+    </tr>
+    <tr>
+        <td>スキルレベル</td>
+        <td>{{project.skilllevel}}</td>
+    </tr>
+    <tr>
+        <td>支払単価</td>
+        <td>{{project.paymentunitprice}}</td>
+    </tr>
+    <tr>
+        <td>面談回数</td>
+        <td>{{project.numberofinterviews}}</td>
+    </tr>
+    <tr>
+        <td>外国籍</td>
+        <td>{{project.foreignnationality}}</td>
+    </tr>
+    <tr>
+        <td>1社先BP</td>
+        <td>{{project.bpallowed}}</td>
+    </tr>
+    <tr>
+        <td>開始時期</td>
+        <td>{{project.startdate}}</td>
+    </tr>
+    <tr>
+        <td>募集人数</td>
+        <td>{{project.recruitmentnumbers}}</td>
+    </tr>
+    <tr>
+        <td>最寄駅</td>
+        <td>{{project.neareststation}}</td>
+    </tr>
+    <tr>
+        <td>テレワーク</td>
+        <td>{{project.telework}}</td>
+    </tr>
+    <tr>
+        <td>備考</td>
+        {% if project.remark != None %}
+            <td>{{project.remarks}}</td>
+        {% else %}
+            <td></td>    
+        {% endif %}    
+    </tr>
+    </table>
+    
+{% endblock content %}

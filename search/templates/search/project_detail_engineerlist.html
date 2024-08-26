@@ -1,0 +1,45 @@
+<table  class="table table-sm">
+    <thead>
+        <tr>
+            <th scope="col">
+                技術者名
+            </th>
+            <th scope="col">
+                性別  
+            </th>
+            <th scope="col">
+                年齢 
+            </th>
+            <th scope="col">
+                詳細  
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for engineer in engineer %}
+        <tr>
+            <form action="" method="post">
+                <td>{{engineer.0.name}}</td>
+
+                <!-- 女性→0　男性→1 -->
+                {% if engineer.0.gender == 0 %}
+                    <td>女性</td>
+                {% elif engineer.0.gender == 1 %}
+                    <td>男性</td>
+                {% else %}
+                    <td></td>
+                {% endif %}
+
+                {% if engineer.0.age != None %}
+                <td>{{engineer.0.age}}</td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                <td>
+                    <a href="{% url 'engineer_detail' engineer.0.id %}" class="btn btn-outline-success">詳細</a>
+                </td>
+            </form>    
+        </tr>
+        {% endfor %}
+    </tbody>        
+</table>    

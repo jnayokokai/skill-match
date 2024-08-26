@@ -1,0 +1,13 @@
+{% extends 'search/engineer_base.html' %}
+
+{% load static %}
+
+{% block content %}
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="testfile1" value="1" required>
+    <button type="submit">アップロード</button>
+</form>
+
+
+{% endblock %}

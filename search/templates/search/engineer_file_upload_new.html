@@ -1,0 +1,7 @@
+{% load static %}
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="testfile2" value="2" required>
+    <button type="submit">アップロード</button>
+</form>

@@ -1,0 +1,46 @@
+{% load static %}
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <h1 style="text-align:center">技術者情報登録画面</h1>
+</head>
+<body>
+    <br>
+    <h4 style="text-align:center">
+        <font color="red" >
+            {{error}}
+        </font>
+    </h4>
+       
+    <div style="text-align:center">
+    <h2>横浜開発センター用</h2>
+    {% block content %}
+    {% endblock content %}
+    </div>
+    <br>
+    <br>
+    
+    <div style="text-align:center">
+    <h2>首都圏第二派遣用</h2>
+        {% include 'search/engineer_file_upload_new.html' %}
+    </div>
+    <br>
+    <br>
+    {% if complete %}
+    <script>
+        alert('登録が完了しました。');
+    </script>
+    {% endif %}
+
+    <br>
+    <br>
+    <table align="center">
+        <tr>
+        <td><a href="{% url 'top' %}">トップ画面に戻る</a></td>
+        </tr>
+        </table>
+</body>        

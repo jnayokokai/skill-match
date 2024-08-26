@@ -1,0 +1,36 @@
+{% extends 'search/project_search_base.html' %}
+
+{% block content %}
+<h1 style="text-align: center">結果</h1>
+
+<table class="table">
+    {% if not projects %}
+    <p style="text-align: center">該当者なし</p>
+    {% else %}
+    <thead>
+        {% if is_paginated %}
+        {% include 'search/pagination.html' %}
+        {% endif %}
+        <tr>
+            <th scope="col">案件名</th>
+            <th scope="col">作業内容</th>
+            <th scope="col">作業期間</th>
+            <th scope="col">スキルレベル</th>
+            <th scope="col">詳細</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for project in projects %}
+        <tr>
+            <td>{{project.clientname}}</td>
+            <td>{{project.workcontents}}</td>
+            <td>{{project.period}}</td>
+            <td>{{project.skilllevel}}</td>
+            <td><a href="{% url 'project_detail' project.pk %}" class="btn btn-outline-success">詳細</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    {% endif %}
+
+
+{% endblock content %}

@@ -1,0 +1,148 @@
+{% extends 'search/detail_base.html' %}
+
+{% block content %}
+
+<table class="table table-bordered table-sm">
+    <tr>
+        <td>氏名</td>
+        <td>{{engineer.name}}</td>
+    </tr>
+    <tr>
+        <td>年齢</td>
+        {% if engineer.age != None %}
+        <td>{{engineer.age}}</td>
+        {% else %}
+        <td></td>
+        {% endif %}
+    </tr>
+    <tr>
+        <td>性別</td>
+        <!-- 女性→0, 男性→1 -->
+        {% if engineer.gender == 0 %}
+            <td>女性</td>
+        {% elif engineer.gender == 1 %}
+            <td>男性</td>
+        {% else %}
+            <td></td>    
+        {% endif %}        
+    </tr>
+    <tr>
+        <td>外国籍</td>
+        <!-- 外国籍なし→0, 外国籍あり→1 -->
+        {% if engineer.foreignnationality == 0 %}
+        <td>外国籍なし</td>
+        {% elif engineer.foreignnationality == 1 %}
+        <td>外国籍あり</td>
+        {% else %}
+        <td></td>
+        {% endif %}
+    </tr>
+    <tr>
+        <td>最終学歴</td>
+        {% if engineer.finaleducation != None %}
+        <td>{{engineer.finaleducation}}</td>
+        {% else %}
+        <td></td>
+        {% endif %}
+    </tr>
+    <tr>
+        <td>最寄駅</td>
+        {% if engineer.neareststation != None %}
+        <td>{{engineer.neareststation}}</td>
+        {% else %}
+        <td></td>
+        {% endif %}
+    </tr>
+    <tr>
+        <td>取得資格名</td>
+        <td>
+            {% for codemaster in codemaster %}
+                {% if codemaster.classification == '01' %}
+                    {{codemaster.name}}
+                {% endif %}
+            {% endfor %}         
+        </td>
+    </tr>
+    <tr>
+        <td>OS</td>
+        <td>
+            {% for codemaster in codemaster %}
+                {% if codemaster.classification == '04' %}
+                    {{codemaster.name}}
+                {% endif %}
+            {% endfor %}         
+        </td>
+    </tr>
+    <tr>
+        <td>サーバー</td>
+        <td>
+            {% for codemaster in codemaster %}
+                {% if codemaster.classification == '05' %}
+                    {{codemaster.name}}
+                {% endif %}
+            {% endfor %}         
+        </td>
+    </tr>
+    <tr>
+        <td>インフラスキル</td>
+        <td>
+            {% for codemaster in codemaster %}
+                {% if codemaster.classification == '07' %}
+                    {{codemaster.name}}
+                {% endif %}
+            {% endfor %} 
+        </td>
+    </tr>
+    <tr>
+        <td>DB</td>
+        <td>
+            {% for codemaster in codemaster %}
+                {% if codemaster.classification == '06' %}
+                    {{codemaster.name}}
+                {% endif %}
+            {% endfor %}         
+        </td>
+    </tr>
+    <tr>
+        <td>言語</td>
+        <td>
+            {% for codemaster in codemaster %}
+                {% if codemaster.classification == '02' %}
+                    {{codemaster.name}}
+                {% endif %}
+            {% endfor %}         
+        </td>  
+    </tr>
+    <tr>
+        <td>プラットフォーム/ツール</td>
+        <td>
+            {% for codemaster in codemaster %}
+                {% if codemaster.classification == '03' %}
+                    {{codemaster.name}}
+                {% endif %}
+            {% endfor %}         
+        </td>
+    </tr>
+    <tr>
+        <td>実務フェーズ経験</td>
+        <td>
+            {% for codemaster in codemaster %}
+                {% if codemaster.classification == '08' %}
+                    {{codemaster.name}}
+                {% endif %}
+            {% endfor %}         
+        </td>
+    </tr>
+    <tr>
+        <td>役割経験</td>
+        <td>
+            {% for codemaster in codemaster %}
+                {% if codemaster.classification == '09' %}
+                    {{codemaster.name}}
+                {% endif %}
+            {% endfor %}         
+        </td>
+    </tr>
+    </table>
+    
+{% endblock content %}
