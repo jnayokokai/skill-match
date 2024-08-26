@@ -86,13 +86,17 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'jna_shanaikenkyudb',
-        'USER': 'root',
+        'NAME': 'jnatest$jna_shanaikenkyudb',
+        'USER': 'jnatest',
         'PASSWORD': 'jna1999',
         # 'HOST': '192.168.101.192',
         # 'HOST': '192.168.101.31',
-        'HOST': '192.168.101.47',
+        # 'HOST': '192.168.101.47',
+        'HOST': 'jnatest.mysql.pythonanywhere-services.com',
         'PORT': '3306',
+        'OPTIONS': {
+    'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+  },
     }
 }
 
